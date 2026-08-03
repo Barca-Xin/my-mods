@@ -1,6 +1,6 @@
 <template>
   <header class="site-header">
-    <router-link to="/" class="brand">🧱 <span>我的 Mods</span></router-link>
+    <router-link to="/" class="brand">🧱 <span>Barca-Xin的网站</span></router-link>
     <div class="nav-links">
       <router-link v-if="!isHome" to="/" class="home-link">← 返回首页</router-link>
       <router-link v-if="!IS_STATIC" to="/admin/mods">后台管理</router-link>

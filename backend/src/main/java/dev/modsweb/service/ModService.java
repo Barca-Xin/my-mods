@@ -76,7 +76,7 @@ public class ModService {
         List<ModVersion> versions = versionRepository.findByModIdOrderByReleaseDateDesc(mod.getId());
         return new ModDetailDto(mod.getId(), mod.getSlug(), mod.getName(), mod.getLogoUrl(),
                 mod.getShortDesc(), mod.getCategory(), mod.getModLoader(),
-                mod.getSourceCodeUrl(), mod.getWikiUrl(),
+                mod.getSourceCodeUrl(), mod.getWikiUrl(), mod.getDeclaration(),
                 versions.stream().map(this::toVersionDto).toList());
     }
 
@@ -119,7 +119,7 @@ public class ModService {
                     List<ModVersion> versions = versionRepository.findByModIdOrderByReleaseDateDesc(m.getId());
                     return new ModDetailDto(m.getId(), m.getSlug(), m.getName(), m.getLogoUrl(),
                             m.getShortDesc(), m.getCategory(), m.getModLoader(),
-                            m.getSourceCodeUrl(), m.getWikiUrl(),
+                            m.getSourceCodeUrl(), m.getWikiUrl(), m.getDeclaration(),
                             versions.stream().map(this::toVersionDto).toList());
                 })
                 .sorted(Comparator.comparing(ModDetailDto::modId))
@@ -139,7 +139,8 @@ public class ModService {
     private ModListItemDto toListItem(ModVersion v, long totalDownloads) {
         Mod m = v.getMod();
         return new ModListItemDto(m.getId(), m.getSlug(), m.getName(), m.getLogoUrl(),
-                m.getShortDesc(), m.getCategory(), m.getModLoader(), totalDownloads, toVersionDto(v));
+                m.getShortDesc(), m.getCategory(), m.getModLoader(), totalDownloads,
+                m.getDeclaration(), toVersionDto(v));
     }
 
     public VersionDto toVersionDto(ModVersion v) {

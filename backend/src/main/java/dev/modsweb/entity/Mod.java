@@ -51,6 +51,10 @@ public class Mod {
     @Column(name = "auto_sync_source", length = 512)
     private String autoSyncSource;
 
+    /** 独立实现声明：卡片/详情页点「声明」弹窗展示，后台可编辑 */
+    @Column(name = "declaration", length = 4096)
+    private String declaration;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

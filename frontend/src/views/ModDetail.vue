@@ -31,9 +31,21 @@
             <a v-if="detail.wikiUrl" :href="detail.wikiUrl" target="_blank" rel="noopener">
               <el-tag size="small" type="warning" effect="plain">Wiki</el-tag>
             </a>
+            <el-button
+              v-if="detail.declaration"
+              size="small"
+              type="info"
+              plain
+              class="decl-btn"
+              @click="declShow = true"
+            >声明</el-button>
           </div>
         </div>
       </div>
+
+      <el-dialog v-model="declShow" title="独立实现声明" width="560px">
+        <div class="decl-content">{{ detail.declaration }}</div>
+      </el-dialog>
 
       <div class="content">
         <!-- 下载区（切入点四：切换版本只刷新这一块） -->
@@ -121,6 +133,7 @@ const selectedVersionId = ref(null)
 const selectedGameVersion = ref('')
 const downloading = ref(false)
 const heroImgFailed = ref(false)
+const declShow = ref(false)
 
 const selectedVersion = computed(() => allVersions.value.find((v) => v.id === selectedVersionId.value) || null)
 const gameVersions = computed(() => [...new Set(allVersions.value.map((v) => v.gameVersion))])
@@ -253,8 +266,19 @@ async function onDownload() {
       display: flex;
       gap: 8px;
       align-items: center;
+
+      .decl-btn {
+        margin-left: 4px;
+      }
     }
   }
+}
+
+.decl-content {
+  white-space: pre-wrap;
+  line-height: 1.8;
+  font-size: 14px;
+  color: var(--text);
 }
 
 .content {

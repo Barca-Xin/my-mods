@@ -42,6 +42,16 @@
               <el-input v-model="modForm.shortDesc" type="textarea" :rows="2" placeholder="一句话介绍" />
             </el-form-item>
           </el-col>
+          <el-col :span="24">
+            <el-form-item label="独立实现声明">
+              <el-input
+                v-model="modForm.declaration"
+                type="textarea"
+                :rows="6"
+                placeholder="卡片/详情页点「声明」弹出的内容；留空则不显示声明按钮。建议写明：独立实现、玩法不受版权保护、代码独立编写、依赖合规。"
+              />
+            </el-form-item>
+          </el-col>
           <el-col :span="12">
             <el-form-item label="封面图 URL">
               <el-input v-model="modForm.logoUrl" placeholder="https://..." />
@@ -205,7 +215,7 @@ const loading = ref(false)
 const saving = ref(false)
 const modForm = reactive({
   name: '', slug: '', category: '', modLoader: '', shortDesc: '',
-  logoUrl: '', sourceCodeUrl: '', wikiUrl: '', autoSyncSource: ''
+  logoUrl: '', sourceCodeUrl: '', wikiUrl: '', autoSyncSource: '', declaration: ''
 })
 const versions = ref([])
 
@@ -231,7 +241,7 @@ onMounted(async () => {
     Object.assign(modForm, {
       name: mod.name, slug: mod.slug, category: mod.category, modLoader: mod.modLoader,
       shortDesc: mod.shortDesc, logoUrl: mod.logoUrl, sourceCodeUrl: mod.sourceCodeUrl,
-      wikiUrl: mod.wikiUrl, autoSyncSource: mod.autoSyncSource
+      wikiUrl: mod.wikiUrl, autoSyncSource: mod.autoSyncSource, declaration: mod.declaration
     })
     versions.value = mod.versions || []
   } finally {

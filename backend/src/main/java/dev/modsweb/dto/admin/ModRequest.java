@@ -11,6 +11,7 @@ public record ModRequest(
         String modLoader,
         String sourceCodeUrl,
         String wikiUrl,
-        String autoSyncSource
+        String autoSyncSource,
+        String declaration
 ) {
 }

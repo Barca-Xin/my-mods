@@ -206,6 +206,7 @@ public class AdminService {
         mod.setSourceCodeUrl(req.sourceCodeUrl());
         mod.setWikiUrl(req.wikiUrl());
         mod.setAutoSyncSource(req.autoSyncSource());
+        mod.setDeclaration(req.declaration());
     }
 
     private Mod getMod(Long id) {

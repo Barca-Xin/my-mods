@@ -75,6 +75,7 @@ export const modApi = {
       shortDesc: mod.shortDesc,
       category: mod.category,
       modLoader: mod.modLoader,
+      declaration: mod.declaration,
       downloadCount: (mod.versions || []).reduce((s, v) => s + (v.downloadCount || 0), 0),
       latestVersion: latest
     }))
@@ -99,6 +100,7 @@ export const modApi = {
       modLoader: mod.modLoader,
       sourceCodeUrl: mod.sourceCodeUrl,
       wikiUrl: mod.wikiUrl,
+      declaration: mod.declaration,
       versions: mod.versions || []
     }
   },

@@ -13,6 +13,7 @@ public record ModDetailDto(
         String modLoader,
         String sourceCodeUrl,
         String wikiUrl,
+        String declaration,
         List<VersionDto> versions
 ) {
 }

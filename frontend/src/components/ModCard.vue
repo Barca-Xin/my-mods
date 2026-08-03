@@ -22,7 +22,14 @@
         </span>
         <span>v{{ mod.latestVersion?.modVersion }}</span>
       </div>
+      <div class="declare-row" v-if="mod.declaration">
+        <span class="declare-btn" @click.stop="declShow = true">声明</span>
+      </div>
     </div>
+
+    <el-dialog v-model="declShow" title="独立实现声明" width="520px">
+      <div class="decl-content">{{ mod.declaration }}</div>
+    </el-dialog>
   </div>
 </template>
 
@@ -34,6 +41,7 @@ const props = defineProps({ mod: { type: Object, required: true } })
 const router = useRouter()
 
 const imgFailed = ref(false)
+const declShow = ref(false)
 const initial = props.mod.name?.charAt(0)?.toUpperCase() || '?'
 
 function goDetail() {
@@ -42,6 +50,33 @@ function goDetail() {
 </script>
 
 <style scoped lang="scss">
+.declare-row {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.declare-btn {
+  font-size: 12px;
+  color: var(--text-dim);
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 10px;
+  transition: color 0.15s, border-color 0.15s;
+
+  &:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+.decl-content {
+  white-space: pre-wrap;
+  line-height: 1.8;
+  font-size: 14px;
+  color: var(--text);
+}
+
 .cover {
   position: absolute;
   inset: 0;

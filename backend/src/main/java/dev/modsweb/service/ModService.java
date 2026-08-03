@@ -74,9 +74,11 @@ public class ModService {
     public ModDetailDto getDetail(String slug) {
         Mod mod = getModBySlug(slug);
         List<ModVersion> versions = versionRepository.findByModIdOrderByReleaseDateDesc(mod.getId());
+        // 声明全文不进详情接口，仅标记是否存在；点「声明」时按需从 /declaration 拉取
         return new ModDetailDto(mod.getId(), mod.getSlug(), mod.getName(), mod.getLogoUrl(),
                 mod.getShortDesc(), mod.getCategory(), mod.getModLoader(),
-                mod.getSourceCodeUrl(), mod.getWikiUrl(), mod.getDeclaration(),
+                mod.getSourceCodeUrl(), mod.getWikiUrl(), null,
+                StringUtils.hasText(mod.getDeclaration()),
                 versions.stream().map(this::toVersionDto).toList());
     }
 
@@ -120,6 +122,7 @@ public class ModService {
                     return new ModDetailDto(m.getId(), m.getSlug(), m.getName(), m.getLogoUrl(),
                             m.getShortDesc(), m.getCategory(), m.getModLoader(),
                             m.getSourceCodeUrl(), m.getWikiUrl(), m.getDeclaration(),
+                            StringUtils.hasText(m.getDeclaration()),
                             versions.stream().map(this::toVersionDto).toList());
                 })
                 .sorted(Comparator.comparing(ModDetailDto::modId))
@@ -140,7 +143,13 @@ public class ModService {
         Mod m = v.getMod();
         return new ModListItemDto(m.getId(), m.getSlug(), m.getName(), m.getLogoUrl(),
                 m.getShortDesc(), m.getCategory(), m.getModLoader(), totalDownloads,
-                m.getDeclaration(), toVersionDto(v));
+                StringUtils.hasText(m.getDeclaration()), toVersionDto(v));
+    }
+
+    /** 卡片点「声明」时按需返回全文：列表接口不含声明，避免未点开卡片就泄露内容 */
+    @Transactional(readOnly = true)
+    public String getDeclaration(String slug) {
+        return getModBySlug(slug).getDeclaration();
     }
 
     public VersionDto toVersionDto(ModVersion v) {

@@ -10,6 +10,7 @@
       "modLoader": "Fabric",
       "sourceCodeUrl": "https://github.com/yourname/advancedenchanting",
       "wikiUrl": "https://github.com/yourname/advancedenchanting/wiki",
+      "hasDeclaration": true,
       "dependencies": [
         "fabric-api",
         "minecraft"
@@ -27,8 +28,7 @@
           "downloadUrl": "files/mods/advancedenchanting/advancedenchanting-1.0.0-1.21.4.jar",
           "downloadCount": 0
         }
-      ],
-      "declaration": "本模组（Advanced Enchanting）由作者完全独立开发实现，不复制任何现有模组的代码、资源或贴图，仅依赖 Fabric API（宽松开源许可），并以 MIT 协议发布。\n\n■ 玩法层面：\"可自选附魔的附魔台\"属于通用游戏机制/玩法概念。依据著作权通例，玩法与游戏机制本身不受版权保护。\n\n■ 代码层面：方块注册、菜单结构、网络协议、费用计算、界面绘制均为自主设计与实现，与同类模组（如 Enchanting Infuser 等）无相同代码表达。经逐行比对，去除 Minecraft 框架样板后，与参考实现的实质相似度趋近于零。\n\n■ 特别说明：浮空书本动画为对原版 Minecraft 动画逻辑的复刻，用于保证与原版一致的视觉效果，不涉及任何第三方模组代码。\n\n■ 合规承诺：本模组不含任何其他模组的代码片段、素材或商标元素。若您认为存在任何不妥，欢迎联系作者沟通。"
+      ]
     },
     {
       "modId": 2,
@@ -40,6 +40,7 @@
       "modLoader": "Fabric",
       "sourceCodeUrl": "https://github.com/yourname/chainminer",
       "wikiUrl": null,
+      "hasDeclaration": true,
       "dependencies": [
         "fabric-api"
       ],
@@ -56,8 +57,7 @@
           "downloadUrl": "files/mods/chainminer/chainminer-1.0.0-1.21.4.jar",
           "downloadCount": 0
         }
-      ],
-      "declaration": "本模组（Chain Miner）由作者完全独立开发实现，不复制任何现有模组的代码、资源或贴图，仅依赖 Fabric API（宽松开源许可），并以 MIT 协议发布。\n\n■ 玩法层面：连锁采集（同时挖掘相连的同类方块）是 Minecraft 社区广泛存在的通用游戏机制。依据著作权通例，玩法与游戏机制本身不受版权保护。\n\n■ 代码层面：核心连通搜索采用标准的广度优先搜索（BFS）通用算法；类名、方法名、网络协议与配置结构均为自主设计，与现存同类模组（如 VeinMiner、Vein Mining 等）无相同代码表达。经逐行比对，去除 Minecraft 框架样板后，与参考实现的实质相似度趋近于零。\n\n■ 合规承诺：本模组不含任何其他模组的代码片段、素材或商标元素。若您认为存在任何不妥，欢迎联系作者沟通。"
+      ]
     }
   ]
 }

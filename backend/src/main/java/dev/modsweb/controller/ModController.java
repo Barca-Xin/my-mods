@@ -40,6 +40,12 @@ public class ModController {
         return modService.getDetail(slug);
     }
 
+    /** 卡片/详情页点「声明」时按需返回独立实现声明全文（列表接口不返回，避免泄露） */
+    @GetMapping("/{slug}/declaration")
+    public String declaration(@PathVariable String slug) {
+        return modService.getDeclaration(slug);
+    }
+
     /** 详情页版本切换器数据（切入点四）：可按游戏版本过滤 */
     @GetMapping("/{slug}/versions")
     public List<VersionDto> versions(@PathVariable String slug,

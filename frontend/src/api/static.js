@@ -6,6 +6,10 @@
 let data = null
 let loadPromise = null
 
+// 声明全文独立文件，仅在点「声明」时按需请求（模块级缓存，避免每次点击重复下载）
+let declCache = null
+let declLoadPromise = null
+
 function loadData() {
   if (!loadPromise) {
     loadPromise = fetch('data.json')
@@ -75,7 +79,7 @@ export const modApi = {
       shortDesc: mod.shortDesc,
       category: mod.category,
       modLoader: mod.modLoader,
-      declaration: mod.declaration,
+      hasDeclaration: !!mod.hasDeclaration,
       downloadCount: (mod.versions || []).reduce((s, v) => s + (v.downloadCount || 0), 0),
       latestVersion: latest
     }))
@@ -100,9 +104,29 @@ export const modApi = {
       modLoader: mod.modLoader,
       sourceCodeUrl: mod.sourceCodeUrl,
       wikiUrl: mod.wikiUrl,
-      declaration: mod.declaration,
+      hasDeclaration: !!mod.hasDeclaration,
       versions: mod.versions || []
     }
+  },
+
+  async declaration(slug) {
+    if (!declLoadPromise) {
+      declLoadPromise = fetch('declarations.json')
+        .then((r) => {
+          if (!r.ok) throw new Error('declarations.json 加载失败: ' + r.status)
+          return r.json()
+        })
+        .then((m) => {
+          declCache = m
+          return m
+        })
+        .catch((e) => {
+          declLoadPromise = null
+          throw e
+        })
+    }
+    const map = await declLoadPromise
+    return (map && map[slug]) || ''
   },
 
   async versions(slug, gameVersion) {

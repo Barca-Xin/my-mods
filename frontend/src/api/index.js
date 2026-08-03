@@ -32,6 +32,7 @@ http.interceptors.response.use(
 const apiModApi = {
   list: (params) => http.get('/mods', { params }),
   detail: (slug) => http.get(`/mods/${slug}`),
+  declaration: (slug) => http.get(`/mods/${slug}/declaration`),
   versions: (slug, gameVersion) => http.get(`/mods/${slug}/versions`, { params: { gameVersion } }),
   dependencies: (slug) => http.get(`/mods/${slug}/dependencies`),
   download: (versionId) => http.post(`/downloads/${versionId}`)

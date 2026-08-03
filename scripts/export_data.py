@@ -37,7 +37,7 @@ def main() -> None:
 
     mods = cur.execute(
         'SELECT id, slug, name, logo_url, short_desc, category, mod_loader,'
-        '       source_code_url, wiki_url'
+        '       source_code_url, wiki_url, declaration'
         '  FROM mods ORDER BY id').fetchall()
 
     out_mods = []
@@ -92,6 +92,7 @@ def main() -> None:
             'modLoader': m['mod_loader'],
             'sourceCodeUrl': m['source_code_url'],
             'wikiUrl': m['wiki_url'],
+            'hasDeclaration': bool(m['declaration'] and str(m['declaration']).strip()),
             'dependencies': dep_names,
             'versions': version_list,
         })
@@ -113,8 +114,15 @@ def main() -> None:
     (PUBLIC / 'data.json').write_text(
         json.dumps({'mods': out_mods}, ensure_ascii=False, indent=2), encoding='utf-8')
 
+    # 声明全文独立成文件（不进 data.json）：首页列表/详情都不带声明，点「声明」时按需请求
+    declarations = {m['slug']: m['declaration']
+                    for m in mods if m['declaration'] and str(m['declaration']).strip()}
+    (PUBLIC / 'declarations.json').write_text(
+        json.dumps(declarations, ensure_ascii=False, indent=2), encoding='utf-8')
+
     print(f'导出完成：{len(out_mods)} 个模组，{jar_count} 个 jar 文件')
     print(f'data.json → {PUBLIC / "data.json"}')
+    print(f'declarations.json（{len(declarations)} 条声明，按需加载）→ {PUBLIC / "declarations.json"}')
 
 
 if __name__ == '__main__':

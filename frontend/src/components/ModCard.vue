@@ -22,13 +22,15 @@
         </span>
         <span>v{{ mod.latestVersion?.modVersion }}</span>
       </div>
-      <div class="declare-row" v-if="mod.declaration">
-        <span class="declare-btn" @click.stop="declShow = true">声明</span>
+      <div class="declare-row" v-if="mod.hasDeclaration">
+        <span class="declare-btn" :class="{ loading: declLoading }" @click.stop="onDeclare">
+          {{ declLoading ? '加载中…' : '声明' }}
+        </span>
       </div>
     </div>
 
     <el-dialog v-model="declShow" title="独立实现声明" width="520px">
-      <div class="decl-content">{{ mod.declaration }}</div>
+      <div class="decl-content">{{ declContent }}</div>
     </el-dialog>
   </div>
 </template>
@@ -36,16 +38,34 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
+import { modApi } from '../api'
 
 const props = defineProps({ mod: { type: Object, required: true } })
 const router = useRouter()
 
 const imgFailed = ref(false)
 const declShow = ref(false)
+const declContent = ref('')
+const declLoading = ref(false)
 const initial = props.mod.name?.charAt(0)?.toUpperCase() || '?'
 
 function goDetail() {
   router.push(`/mod/${props.mod.slug}`)
+}
+
+/** 声明全文不进列表接口；点按钮时才拉取（避免未点开卡片就泄露内容） */
+async function onDeclare() {
+  if (declLoading.value) return
+  declLoading.value = true
+  try {
+    declContent.value = await modApi.declaration(props.mod.slug)
+    declShow.value = true
+  } catch (e) {
+    ElMessage.error(e.response?.data?.message || '声明加载失败')
+  } finally {
+    declLoading.value = false
+  }
 }
 </script>
 
@@ -67,6 +87,11 @@ function goDetail() {
   &:hover {
     color: var(--accent);
     border-color: var(--accent);
+  }
+
+  &.loading {
+    cursor: wait;
+    opacity: 0.6;
   }
 }
 

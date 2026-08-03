@@ -32,19 +32,20 @@
               <el-tag size="small" type="warning" effect="plain">Wiki</el-tag>
             </a>
             <el-button
-              v-if="detail.declaration"
+              v-if="detail.hasDeclaration"
               size="small"
               type="info"
               plain
               class="decl-btn"
-              @click="declShow = true"
+              :loading="declLoading"
+              @click="onDeclare"
             >声明</el-button>
           </div>
         </div>
       </div>
 
       <el-dialog v-model="declShow" title="独立实现声明" width="560px">
-        <div class="decl-content">{{ detail.declaration }}</div>
+        <div class="decl-content">{{ declContent }}</div>
       </el-dialog>
 
       <div class="content">
@@ -134,6 +135,8 @@ const selectedGameVersion = ref('')
 const downloading = ref(false)
 const heroImgFailed = ref(false)
 const declShow = ref(false)
+const declContent = ref('')
+const declLoading = ref(false)
 
 const selectedVersion = computed(() => allVersions.value.find((v) => v.id === selectedVersionId.value) || null)
 const gameVersions = computed(() => [...new Set(allVersions.value.map((v) => v.gameVersion))])
@@ -163,6 +166,20 @@ onMounted(async () => {
     selectedGameVersion.value = target.gameVersion
   }
 })
+
+/** 声明全文不进详情接口，点按钮时才拉取（与卡片一致） */
+async function onDeclare() {
+  if (declLoading.value) return
+  declLoading.value = true
+  try {
+    declContent.value = await modApi.declaration(detail.value.slug)
+    declShow.value = true
+  } catch (e) {
+    ElMessage.error(e.response?.data?.message || '声明加载失败')
+  } finally {
+    declLoading.value = false
+  }
+}
 
 function onGameVersionChange() {
   const filtered = filteredVersions.value

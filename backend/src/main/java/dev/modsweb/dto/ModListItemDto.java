@@ -10,7 +10,7 @@ public record ModListItemDto(
         String category,
         String modLoader,
         long downloadCount,
-        String declaration,
+        boolean hasDeclaration,
         VersionDto latestVersion
 ) {
 }

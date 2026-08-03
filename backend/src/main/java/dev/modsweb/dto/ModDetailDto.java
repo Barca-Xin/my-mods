@@ -14,6 +14,7 @@ public record ModDetailDto(
         String sourceCodeUrl,
         String wikiUrl,
         String declaration,
+        boolean hasDeclaration,
         List<VersionDto> versions
 ) {
 }

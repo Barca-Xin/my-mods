@@ -8,7 +8,7 @@
       "shortDesc": "自定义附魔台：自定义配方、附魔选择、经验与钻石消耗。现支持 1.20.1 与 1.21.4。",
       "category": "魔法",
       "modLoader": "Fabric",
-      "sourceCodeUrl": "https://github.com/yourname/advancedenchanting",
+      "sourceCodeUrl": "https://github.com/Barca-Xin/advancedenchanting",
       "wikiUrl": "https://github.com/yourname/advancedenchanting/wiki",
       "hasDeclaration": true,
       "dependencies": [
@@ -38,7 +38,7 @@
       "shortDesc": "连锁采集：按住鼠标中键挖整条矿脉，支持配置最大方块数。",
       "category": "实用",
       "modLoader": "Fabric",
-      "sourceCodeUrl": "https://github.com/yourname/chainminer",
+      "sourceCodeUrl": "https://github.com/Barca-Xin/chainminer",
       "wikiUrl": null,
       "hasDeclaration": true,
       "dependencies": [

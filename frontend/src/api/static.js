@@ -25,15 +25,20 @@ function blankToNull(s) {
   return s && String(s).trim() ? String(s).trim() : null
 }
 
+/** 把 releaseDate（可能是 epoch 毫秒数字或 ISO 字符串）转成可比较的毫秒数 */
+function dateVal(d) {
+  if (d == null || d === '') return 0
+  const v = typeof d === 'number' ? d : Date.parse(d)
+  return Number.isNaN(v) ? 0 : v
+}
+
 /** 某模组在筛选条件下的最新版本（对应后端 GROUP BY + MAX(release_date) 聚合） */
 function latestVersion(mod, gameVersion, loader) {
   let vs = mod.versions || []
   if (gameVersion) vs = vs.filter((v) => v.gameVersion === gameVersion)
   if (loader) vs = vs.filter((v) => (v.modLoader || mod.modLoader) === loader)
   if (!vs.length) return null
-  return [...vs].sort(
-    (a, b) => (b.releaseDate || '').localeCompare(a.releaseDate || '') || b.id - a.id
-  )[0]
+  return [...vs].sort((a, b) => dateVal(b.releaseDate) - dateVal(a.releaseDate) || b.id - a.id)[0]
 }
 
 export const modApi = {
@@ -58,9 +63,7 @@ export const modApi = {
       if (!latest) continue
       rows.push({ mod, latest })
     }
-    rows.sort(
-      (a, b) => (b.latest.releaseDate || '').localeCompare(a.latest.releaseDate || '') || b.latest.id - a.latest.id
-    )
+    rows.sort((a, b) => dateVal(b.latest.releaseDate) - dateVal(a.latest.releaseDate) || b.latest.id - a.latest.id)
 
     const total = rows.length
     const start = page * size

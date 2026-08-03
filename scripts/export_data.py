@@ -7,7 +7,17 @@
 import json
 import shutil
 import sqlite3
+from datetime import datetime
 from pathlib import Path
+
+
+def to_iso(value):
+    """release_date 可能是 Hibernate 存的 epoch 毫秒(int) 或 ISO 字符串，统一转成前端可用的 ISO 字符串"""
+    if value is None:
+        return None
+    if isinstance(value, (int, float)):
+        return datetime.fromtimestamp(value / 1000).isoformat(timespec='milliseconds')
+    return str(value)
 
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / 'backend' / 'data' / 'mods.db'
@@ -57,7 +67,7 @@ def main() -> None:
                 'fileSize': v['file_size'],
                 'md5': v['md5'],
                 'changelog': v['changelog'],
-                'releaseDate': v['release_date'],
+                'releaseDate': to_iso(v['release_date']),
                 'recommended': bool(v['is_recommended']),
                 'downloadUrl': url,
                 'downloadCount': v['download_count'] or 0,

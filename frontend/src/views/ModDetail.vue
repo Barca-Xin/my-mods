@@ -84,6 +84,11 @@
             <div class="sub-title">更新日志</div>
             <p>{{ selectedVersion.changelog }}</p>
           </div>
+
+          <div class="disclaimer">
+            This mod is developed from scratch independently. Any similarity to existing mods in
+            functionality is coincidental, as the mechanics are based on common game design concepts.
+          </div>
         </section>
 
         <!-- 依赖图谱（切入点六） -->
@@ -345,6 +350,15 @@ async function onDownload() {
     margin: 0;
     white-space: pre-wrap;
   }
+}
+
+.disclaimer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-dim);
 }
 
 .hint {

@@ -26,18 +26,6 @@
           "recommended": true,
           "downloadUrl": "files/mods/advancedenchanting/advancedenchanting-1.0.0-1.21.4.jar",
           "downloadCount": 0
-        },
-        {
-          "id": 1,
-          "gameVersion": "1.20.1",
-          "modVersion": "1.0.0",
-          "fileSize": 238,
-          "md5": "dff84fdfe183aaabfd495c09adf1161f",
-          "changelog": "首个发布版本：自定义附魔台、钻石消耗、≥35 级门槛（创造豁免）。",
-          "releaseDate": "2026-02-24T09:50:15.305",
-          "recommended": true,
-          "downloadUrl": "files/mods/advancedenchanting/advancedenchanting-1.0.0-1.20.1.jar",
-          "downloadCount": 1
         }
       ]
     },
@@ -65,34 +53,6 @@
           "releaseDate": "2026-06-19T09:50:15.310",
           "recommended": true,
           "downloadUrl": "files/mods/chainminer/chainminer-1.0.0-1.21.4.jar",
-          "downloadCount": 0
-        }
-      ]
-    },
-    {
-      "modId": 3,
-      "slug": "inventorysorter",
-      "name": "Inventory Sorter",
-      "logoUrl": "https://raw.githubusercontent.com/yourname/inventorysorter/main/icon.png",
-      "shortDesc": "一键整理：按 J 键整理容器与背包，自动堆叠同类物品。",
-      "category": "实用",
-      "modLoader": "Fabric",
-      "sourceCodeUrl": "https://github.com/yourname/inventorysorter",
-      "wikiUrl": null,
-      "dependencies": [
-        "fabric-api"
-      ],
-      "versions": [
-        {
-          "id": 4,
-          "gameVersion": "1.21.4",
-          "modVersion": "1.0.0",
-          "fileSize": 236,
-          "md5": "55bc5cd546715b8a6d9a1e3fdd704376",
-          "changelog": "一键整理背包与所有容器。",
-          "releaseDate": "2026-07-04T09:50:15.312",
-          "recommended": true,
-          "downloadUrl": "files/mods/inventorysorter/inventorysorter-1.0.0-1.21.4.jar",
           "downloadCount": 0
         }
       ]

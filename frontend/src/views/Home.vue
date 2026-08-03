@@ -4,23 +4,13 @@
 
     <main class="container">
       <div class="filters">
-        <el-select
-          v-model="filters.gameVersion"
-          placeholder="游戏版本"
-          clearable
-          class="filter-select"
-          @change="load(1)"
-        >
+        <el-select v-model="filters.gameVersion" class="filter-select" @change="load(1)">
+          <el-option label="全部" value="" />
           <el-option v-for="g in GAME_VERSIONS" :key="g" :label="g" :value="g" />
         </el-select>
 
-        <el-select
-          v-model="filters.loader"
-          placeholder="加载器"
-          clearable
-          class="filter-select"
-          @change="load(1)"
-        >
+        <el-select v-model="filters.loader" class="filter-select" @change="load(1)">
+          <el-option label="全部" value="" />
           <el-option v-for="l in LOADERS" :key="l" :label="l" :value="l" />
         </el-select>
 

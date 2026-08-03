@@ -1,0 +1,46 @@
+# 构建前端静态站并自动部署到 GitHub Pages
+# 用法：代码推到 main 分支即自动生效；也可以手动「Run workflow」
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build static site
+        working-directory: frontend
+        run: |
+          npm install --no-audit --no-fund
+          npm run build:static
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/dist
+
+      - name: Deploy to Pages
+        uses: actions/deploy-pages@v4

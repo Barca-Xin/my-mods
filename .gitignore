@@ -1,0 +1,13 @@
+# Java / Spring Boot
+backend/build/
+backend/.gradle/
+backend/data/
+backend/uploads/
+
+# Node / Vite
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db

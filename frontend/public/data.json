@@ -1,0 +1,101 @@
+{
+  "mods": [
+    {
+      "modId": 1,
+      "slug": "advancedenchanting",
+      "name": "Advanced Enchanting",
+      "logoUrl": "https://raw.githubusercontent.com/yourname/advancedenchanting/main/icon.png",
+      "shortDesc": "自定义附魔台：自定义配方、附魔选择、经验与钻石消耗。现支持 1.20.1 与 1.21.4。",
+      "category": "魔法",
+      "modLoader": "Fabric",
+      "sourceCodeUrl": "https://github.com/yourname/advancedenchanting",
+      "wikiUrl": "https://github.com/yourname/advancedenchanting/wiki",
+      "dependencies": [
+        "fabric-api",
+        "minecraft"
+      ],
+      "versions": [
+        {
+          "id": 2,
+          "gameVersion": "1.21.4",
+          "modVersion": "1.0.0",
+          "fileSize": 238,
+          "md5": "dff84fdfe183aaabfd495c09adf1161f",
+          "changelog": "迁移到 1.21.4：物品模型系统重构适配、新网络包格式。",
+          "releaseDate": 1775353815306,
+          "recommended": true,
+          "downloadUrl": "files/mods/advancedenchanting/advancedenchanting-1.0.0-1.21.4.jar",
+          "downloadCount": 0
+        },
+        {
+          "id": 1,
+          "gameVersion": "1.20.1",
+          "modVersion": "1.0.0",
+          "fileSize": 238,
+          "md5": "dff84fdfe183aaabfd495c09adf1161f",
+          "changelog": "首个发布版本：自定义附魔台、钻石消耗、≥35 级门槛（创造豁免）。",
+          "releaseDate": 1771897815305,
+          "recommended": true,
+          "downloadUrl": "files/mods/advancedenchanting/advancedenchanting-1.0.0-1.20.1.jar",
+          "downloadCount": 1
+        }
+      ]
+    },
+    {
+      "modId": 2,
+      "slug": "chainminer",
+      "name": "Chain Miner",
+      "logoUrl": "https://raw.githubusercontent.com/yourname/chainminer/main/icon.png",
+      "shortDesc": "连锁采集：按住鼠标中键挖整条矿脉，支持配置最大方块数。",
+      "category": "实用",
+      "modLoader": "Fabric",
+      "sourceCodeUrl": "https://github.com/yourname/chainminer",
+      "wikiUrl": null,
+      "dependencies": [
+        "fabric-api"
+      ],
+      "versions": [
+        {
+          "id": 3,
+          "gameVersion": "1.21.4",
+          "modVersion": "1.0.0",
+          "fileSize": 232,
+          "md5": "c3e148e0787e9d543b5b54387b5353ae",
+          "changelog": "支持连锁整条矿脉，含最大方块数配置。",
+          "releaseDate": 1781833815310,
+          "recommended": true,
+          "downloadUrl": "files/mods/chainminer/chainminer-1.0.0-1.21.4.jar",
+          "downloadCount": 0
+        }
+      ]
+    },
+    {
+      "modId": 3,
+      "slug": "inventorysorter",
+      "name": "Inventory Sorter",
+      "logoUrl": "https://raw.githubusercontent.com/yourname/inventorysorter/main/icon.png",
+      "shortDesc": "一键整理：按 J 键整理容器与背包，自动堆叠同类物品。",
+      "category": "实用",
+      "modLoader": "Fabric",
+      "sourceCodeUrl": "https://github.com/yourname/inventorysorter",
+      "wikiUrl": null,
+      "dependencies": [
+        "fabric-api"
+      ],
+      "versions": [
+        {
+          "id": 4,
+          "gameVersion": "1.21.4",
+          "modVersion": "1.0.0",
+          "fileSize": 236,
+          "md5": "55bc5cd546715b8a6d9a1e3fdd704376",
+          "changelog": "一键整理背包与所有容器。",
+          "releaseDate": 1783129815312,
+          "recommended": true,
+          "downloadUrl": "files/mods/inventorysorter/inventorysorter-1.0.0-1.21.4.jar",
+          "downloadCount": 0
+        }
+      ]
+    }
+  ]
+}

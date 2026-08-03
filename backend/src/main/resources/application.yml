@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mods-web
+  datasource:
+    url: jdbc:sqlite:./data/mods.db
+    driver-class-name: org.sqlite.JDBC
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 512MB
+      max-request-size: 512MB
+
+app:
+  storage:
+    type: local
+    upload-dir: ./uploads
+  admin:
+    username: admin
+    # BCrypt hash of the default password「admin123」，用 jshell + spring-security-crypto 生成
+    password-hash: "$2a$10$Hii5Nv26JrdyWC93P//ZOudWIQRou0Q1vrGW/BcsMdYYDJrG5gWtW"
+  jwt:
+    secret: "66d809f394dcdc4a0fb4b917b2e41662f08065e8d742c239e7fe5311a971812f"
+    expire-hours: 72

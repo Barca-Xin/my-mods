@@ -58,6 +58,35 @@
           "downloadCount": 0
         }
       ]
+    },
+    {
+      "modId": 3,
+      "slug": "tooldurability",
+      "name": "Tool Durability",
+      "logoUrl": null,
+      "shortDesc": "鼠标悬停物品图标时，在物品名下方显示当前耐久/最高耐久；剩余不足 25% 时文本变红。纯客户端 Fabric 模组。",
+      "category": "实用",
+      "modLoader": "Fabric",
+      "sourceCodeUrl": "https://github.com/Barca-Xin/tooldurability",
+      "wikiUrl": null,
+      "hasDeclaration": true,
+      "dependencies": [
+        "minecraft"
+      ],
+      "versions": [
+        {
+          "id": 4,
+          "gameVersion": "1.21.4",
+          "modVersion": "1.0.0",
+          "fileSize": 5204,
+          "md5": "b81e305b6c8d51e526d3b51c4da4cd00",
+          "changelog": "首个版本：悬停显示物品当前耐久/最高耐久，剩余不足 25% 时标红。",
+          "releaseDate": "2026-08-04T15:03:27.809",
+          "recommended": true,
+          "downloadUrl": "files/mods/tooldurability/tooldurability-1.0.0-1.21.4.jar",
+          "downloadCount": 0
+        }
+      ]
     }
   ]
 }

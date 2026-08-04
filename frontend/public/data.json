@@ -20,8 +20,8 @@
           "id": 2,
           "gameVersion": "1.21.4",
           "modVersion": "1.0.0",
-          "fileSize": 238,
-          "md5": "dff84fdfe183aaabfd495c09adf1161f",
+          "fileSize": 44054,
+          "md5": "318ebc2e7fb49f05737a2a78b0c72323",
           "changelog": "迁移到 1.21.4：物品模型系统重构适配、新网络包格式。",
           "releaseDate": "2026-04-05T09:50:15.306",
           "recommended": true,
@@ -49,8 +49,8 @@
           "id": 3,
           "gameVersion": "1.21.4",
           "modVersion": "1.0.0",
-          "fileSize": 232,
-          "md5": "c3e148e0787e9d543b5b54387b5353ae",
+          "fileSize": 20115,
+          "md5": "3f5cc10ac21ff1f7aa6d7fd50a614d13",
           "changelog": "支持连锁整条矿脉，含最大方块数配置。",
           "releaseDate": "2026-06-19T09:50:15.310",
           "recommended": true,
@@ -84,6 +84,66 @@
           "releaseDate": "2026-08-04T15:03:27.809",
           "recommended": true,
           "downloadUrl": "files/mods/tooldurability/tooldurability-1.0.0-1.21.4.jar",
+          "downloadCount": 0
+        }
+      ]
+    },
+    {
+      "modId": 4,
+      "slug": "deathback",
+      "name": "Death Back",
+      "logoUrl": null,
+      "shortDesc": "/deathback 命令传送回上次死亡地点（每死一次限用一次），方便回去捡掉落物。纯服务端逻辑，跨维度记录。",
+      "category": "实用",
+      "modLoader": "Fabric",
+      "sourceCodeUrl": "https://github.com/Barca-Xin/deathback",
+      "wikiUrl": null,
+      "hasDeclaration": true,
+      "dependencies": [
+        "fabric-api",
+        "minecraft"
+      ],
+      "versions": [
+        {
+          "id": 5,
+          "gameVersion": "1.21.4",
+          "modVersion": "1.0.0",
+          "fileSize": 10295,
+          "md5": "40bc6fe9e51f7503592cdaf01357d776",
+          "changelog": "首个版本：死亡时记录坐标，/deathback 传回，安全落点搜索，每死一次限用一次。",
+          "releaseDate": "2026-08-04T20:22:11.695",
+          "recommended": true,
+          "downloadUrl": "files/mods/deathback/deathback-1.0.0-1.21.4.jar",
+          "downloadCount": 0
+        }
+      ]
+    },
+    {
+      "modId": 5,
+      "slug": "healthtag",
+      "name": "Health Tag",
+      "logoUrl": null,
+      "shortDesc": "准心对准或仇恨锁定你的生物，头顶显示血量（血条 + 当前/最大变色数字）。纯客户端渲染，任意角度正对玩家。",
+      "category": "实用",
+      "modLoader": "Fabric",
+      "sourceCodeUrl": "https://github.com/Barca-Xin/healthtag",
+      "wikiUrl": null,
+      "hasDeclaration": true,
+      "dependencies": [
+        "fabric-api",
+        "minecraft"
+      ],
+      "versions": [
+        {
+          "id": 6,
+          "gameVersion": "1.21.4",
+          "modVersion": "1.0.0",
+          "fileSize": 10956,
+          "md5": "f3f5131e394f68c71baa3ffd86468bb2",
+          "changelog": "首个版本：头顶血条 + 变色数字，准心/仇恨触发显示，32 格内可调。",
+          "releaseDate": "2026-08-04T20:22:11.695",
+          "recommended": true,
+          "downloadUrl": "files/mods/healthtag/healthtag-1.0.0-1.21.4.jar",
           "downloadCount": 0
         }
       ]
